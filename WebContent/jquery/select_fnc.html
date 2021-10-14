@@ -10,10 +10,13 @@
     <script>
         //document).ready() 생략 가능 
         $(function () {
-            $('button').click(findFnc);
+            $('button').eq(0).click(findFnc);
+            $('button').eq(1).click(function () {
+                $('tbody>tr>td>input').filter(':checked').parentsUntil('tbody').remove();
 
+            });
         });
-
+        //find는 상위요소에서??? filter는 가지고 온 요소들 중에서???
         function findFnc() {
             let trVal = $('tbody>tr');
             $(trVal).find('td:nth-child(1)').css('background-color', 'yellow');
@@ -26,7 +29,7 @@
             // }
             //$('tbody>tr>td:contains(3.5)').css('color', 'red');
             $(trVal).find('td:contains(jpg)').css('color', 'red');
-           console.log($(trVal).find('input:checked').parent().next().contents());
+            console.log($(trVal).find('input:checked').parent().next().contents());
 
         }
 
@@ -50,7 +53,7 @@
 
 <body>
     <div id="show"></div>
-    <button>클릭</button>
+    <button>클릭</button><button>삭제</button>
     <script>
         fetch('coffee.json')
             .then(x => x.json()) // .then(function(x) {return })??
