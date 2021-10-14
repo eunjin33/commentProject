@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import org.eclipse.jdt.internal.compiler.ast.Statement;
 
 public class DAO {
 	protected Connection conn;
