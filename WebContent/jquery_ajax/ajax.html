@@ -26,7 +26,7 @@
             });
         });
 
-        //성공하면 실행할 함수 
+        //성공하면 실행할 함수 - 이게 테이블에 삽입되는 부분
         function showData(data) {
             console.log(data);
             let table, tbody, tr, td;
@@ -79,7 +79,7 @@
 
             //ajax 호출...DB 연결 후
             $.ajax({
-                url: '입력서블릿',
+                url: '../',
                 type: 'post',
                 data: {
                     id: userId,

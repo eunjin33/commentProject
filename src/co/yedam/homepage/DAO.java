@@ -1,4 +1,4 @@
-package co.yedam.movie;
+package co.yedam.homepage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
