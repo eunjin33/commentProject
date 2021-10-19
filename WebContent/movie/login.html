@@ -7,7 +7,7 @@
 <script src="../jquery/jquery-3.6.0.min.js"></script>
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css"
 	rel="stylesheet">
-	
+
 <style>
 * {
 	box-sizing: border-box;
@@ -68,13 +68,13 @@ body {
 
 <body>
 	<div class="login-form">
-		<form id="frm" method="post" onsubmit="submitFrm(event)">
-			로그인 <br> <br> <input type="text" id="userId" name="email"
+		<form id="frm" method="post" onsubmit="login(event)">
+			로그인 <br> <br> <input type="text" id="userId" name="userId"
 				class="text-field" placeholder="이메일(example@gmail.com)"><br>
-			<input type="password" id="userPw" name="password" class="text-field"
-				placeholder="비밀번호"><br> <input type="submit"
-				value="로그인" class="submit-btn"> <input type="submit"
-				value="회원가입" class="submit-btn"
+			<input type="password" id="userPw" name="userPw" class="text-field"
+				placeholder="비밀번호"><br> 
+			<input type="submit" value="로그인" class="submit-btn"> 
+			<input type="button" value="회원가입" class="submit-btn"
 				onclick="location.href='register.html'">
 		</form>
 		<div class="links">
@@ -94,12 +94,25 @@ body {
 	</div>
 </body>
 <script>
-	function submitFrm(e) {
+	function login(e) {
 		e.preventDefault();
-		let userNick = $('#userNick').val();
 		let email = $('#userId').val();
 		let userPw = $('#userPw').val();
-
+		
+		if(!email){
+			window.alert('아이디 입력하세요');
+			document.frm.email.focus();
+			e.preventDefault();
+			return false;
+		}
+		
+		if(!userPw){
+			window.alert('비밀번호 입력하세요');
+			document.frm.userPw.focus();
+			e.preventDefault();
+			return false;
+		}
+		
 		$.ajax({
 			url : '../LoginServlet',
 			type : 'post',
@@ -110,12 +123,17 @@ body {
 			dataType : 'json',
 			success : function(result) {
 				console.log(result);
+				if (result == 1) {
+					window.location.href = 'index.html';
+				} else if (result == 0) {
+					window.alert('로그인 실패');
+				}
 			},
 			error : function(reject) {
-				console.log(reject);
+				window.alert('프로그램 실행 오류');
 			}
 
-		})
+		});
 
 	}
 </script>

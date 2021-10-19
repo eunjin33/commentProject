@@ -20,40 +20,47 @@ public class LoginServlet extends HttpServlet {
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
 
+		// 기본 설정
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 
-		// 1.parameter 추출
+		// request에 담겨있는 값을 서블릿 변수에 담기.
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
 
-//		// 2.유효성 체크
-//		if (userId.isEmpty() || userPw.isEmpty()) {
-//			RequestDispatcher rd = request.getRequestDispatcher("");
-//			rd.forward(request, response);
-//			return;
-//		}else {
-//			
-//		}
-
-		UserVO vo = new UserVO();
 		UserDAO dao = new UserDAO();
-		
-		//vo = Integer.parseInt(dao.loginUser(userId, userPw));
+		UserVO vo = new UserVO();
+
+		// VO클래스에 앞단에서 가져온 값을 세팅함.
 		vo.setUserId(userId);
 		vo.setUserPw(userPw);
+	
 
-//		HttpSession session = request.getSession();
-//		session.setAttribute("isLogOn", true);
-//		session.setAttribute("login.id", userId);
-//		session.setAttribute("login.pwd", userPw);
+		// 앞쪽 vo: 메소드로부터 리턴타입 뒷쪽: 메소드의 인자값
+		vo = dao.loginUser(vo);
 
+		// db에서 가지고 온 값을 저장
+		 String dbId = vo.getUserId();
+		 String dbPw = vo.getUserPw();
+
+		// 로그인 일치 검사
+		int r = -1;
+		if (userId == dbId && userPw == dbPw) {
+			r = 1;
+			session.setAttribute("sessionId", dbId);
+		} else {
+			r = 0;
+		}
+		
+		System.out.println(r);
+		
+		response.getWriter().println(r);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

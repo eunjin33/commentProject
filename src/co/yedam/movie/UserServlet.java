@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
@@ -41,7 +39,6 @@ public class UserServlet extends HttpServlet {
 		vo.setUserId(userId);
 		vo.setUserPw(userPw);
 		vo.setUserNick(userNick);
-
 
 //		System.out.println("<h1>추가페이지입니다</h1>");
 //		//사용자가 이름과 내용은 등록해서 누르면 

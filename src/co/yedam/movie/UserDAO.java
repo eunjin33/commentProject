@@ -30,7 +30,7 @@ public class UserDAO extends DAO {
 			disconnect();
 		}
 	}
-
+//
 //	// 회원 로그인
 //	public String loginUser (String userPw) {
 //		connect();
@@ -48,9 +48,9 @@ public class UserDAO extends DAO {
 //	}
 
 	// 회원 로그인
-	public int loginUser(UserVO vo) {
+	public UserVO loginUser(UserVO vo) {
 		connect();
-		String sql = "SELECT user_pw FROM users WHERE user_id = ?";
+		String sql = "SELECT user_pw FROM users WHERE user_id=?";
 		int result = -1;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -58,7 +58,7 @@ public class UserDAO extends DAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) { // 아이디 존재
-				if (rs.getString("user_pw").equals(vo.getUserPw())) {
+				if (rs.getString("user_id").equals(vo.getUserId())) {
 					result = 1; // 비밀번호 일치
 				} else {
 					result = 0; // 비밀번호 불일치
@@ -69,8 +69,11 @@ public class UserDAO extends DAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
+		} finally {
+			disconnect();
 		}
-		return result;
+		return vo;
 	}
 
 }
