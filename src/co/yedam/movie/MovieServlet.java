@@ -34,10 +34,10 @@ public class MovieServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().create();
 		
 		
-		ReviewDAO dao = new ReviewDAO();
-		List<MovieVO> list = dao.getProdList();
-		
-		out.print(gson.toJson(list));
+		MovieDAO dao = new MovieDAO();
+		List<MovieVO> list = dao.getMovieList(); //list
+		System.out.println(list);
+		out.println(gson.toJson(list));
 		
 		
 		

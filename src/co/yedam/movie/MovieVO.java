@@ -1,38 +1,18 @@
 package co.yedam.movie;
 
 public class MovieVO {
-	
-	private int movieId;
+	private int movie_id;
 	private String poster;
 	private String title;
 	private String genre;
-	private String openingD;
-	private String contentM;
+	private String opening_d;
+	private String content_m;
 	
-	public MovieVO(int movieId, String poster, String title, String genre, String openingD, String contentM) {
-		super();
-		this.movieId = movieId;
-		this.poster = poster;
-		this.title = title;
-		this.genre = genre;
-		this.openingD = openingD;
-		this.contentM = contentM;
+	public int getMovie_id() {
+		return movie_id;
 	}
-	
-	
-
-	public MovieVO() {
-		super();
-	}
-
-
-
-
-	public int getMovieId() {
-		return movieId;
-	}
-	public void setMovieId(int movieId) {
-		this.movieId = movieId;
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
 	}
 	public String getPoster() {
 		return poster;
@@ -52,19 +32,23 @@ public class MovieVO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getOpeningD() {
-		return openingD;
+	public String getOpening_d() {
+		return opening_d;
 	}
-	public void setOpeningD(String openingD) {
-		this.openingD = openingD;
+	public void setOpening_d(String opening_d) {
+		this.opening_d = opening_d;
 	}
-	public String getContentM() {
-		return contentM;
+	public String getContent_m() {
+		return content_m;
 	}
-	public void setContentM(String contentM) {
-		this.contentM = contentM;
+	public void setContent_m(String content_m) {
+		this.content_m = content_m;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "MovieVO [movie_id=" + movie_id + ", poster=" + poster + ", title=" + title + ", genre=" + genre
+				+ ", opening_d=" + opening_d + ", content_m=" + content_m + "]";
+	}
 	
 }

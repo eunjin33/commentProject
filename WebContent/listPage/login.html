@@ -69,13 +69,11 @@ body {
 <body>
 	<div class="login-form">
 		<form id="frm" method="post" onsubmit="login(event)">
-			로그인 <br> <br> <input type="text" id="userId" name="userId"
-				class="text-field" placeholder="이메일(example@gmail.com)"><br>
-			<input type="password" id="userPw" name="userPw" class="text-field"
-				placeholder="비밀번호"><br> <input type="submit"
-				value="로그인" class="submit-btn"> <input type="button"
-				value="회원가입" class="submit-btn"
-				onclick="location.href='register.html'">
+			로그인 <br> <br> 
+			<input type="text" id="userId" name="userId" class="text-field" placeholder="이메일(example@gmail.com)"><br>
+			<input type="password" id="userPw" name="userPw" class="text-field" placeholder="비밀번호"><br> 
+			<input type="submit" value="로그인" class="submit-btn"> 
+			<input type="button" value="회원가입" class="submit-btn" onclick="location.href='register.html'">
 		</form>
 		<div class="links">
 			<a href="#">다른 방법으로 로그인하기</a>
@@ -94,6 +92,18 @@ body {
 	</div>
 </body>
 <script>
+	//document.getElementById('login').onclick = function() {
+	//	sessionStorage.setItem('key', 'value'); 값을 받아서 키값에 저장한다
+	//	sessionStorage.setItem('key', 'value'); 값을 받아서 키값에 저장한다
+//	} 
+	
+	 //document.getElementById('login').onclick = function () {
+        //    let userName = sessionStorage.getItem('username');
+       //     let userId = sessionStorage.getItem('userid');
+         //   console.log(`name: ${userName}, id: ${userId}`);
+      // }
+	
+
 	function login(e) {
 		e.preventDefault();
 		let email = $('#userId').val();
@@ -124,7 +134,7 @@ body {
 			success : function(result) {
 				console.log(result);
 				if (result) {
-					window.location.href = 'index.html';
+					window.location.href = 'listPage.html';
 				} else {
 					window.alert('로그인 실패');
 				}
