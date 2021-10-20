@@ -102,6 +102,8 @@ body {
        //     let userId = sessionStorage.getItem('userid');
          //   console.log(`name: ${userName}, id: ${userId}`);
       // }
+	 
+	 
 	
 
 	function login(e) {
@@ -111,7 +113,7 @@ body {
 
 		if (!email) {
 			window.alert('아이디 입력하세요');
-			document.frm.email.focus();
+			document.frm.userId.focus();
 			e.preventDefault();
 			return false;
 		}
@@ -134,6 +136,8 @@ body {
 			success : function(result) {
 				console.log(result);
 				if (result) {
+					sessionStorage.setItem('id', $('#userId'));
+					sessionStorage.setItem('pw', $('#userPw')); 
 					window.location.href = 'listPage.html';
 				} else {
 					window.alert('로그인 실패');
