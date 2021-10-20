@@ -30,10 +30,6 @@ public class UserVO {
 		this.userNick = userNick;
 	}
 
-	@Override
-	public String toString() {
-		return "Movie [userId=" + userId + ", userPw=" + userPw + ", userNick=" + userNick + ", toString()="
-				+ super.toString() + "]";
-	}
+
 
 }

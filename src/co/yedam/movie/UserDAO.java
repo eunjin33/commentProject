@@ -50,30 +50,24 @@ public class UserDAO extends DAO {
 	// 회원 로그인
 	public UserVO loginUser(UserVO vo) {
 		connect();
-		String sql = "SELECT user_pw FROM users WHERE user_id=?";
+		String sql = "SELECT * FROM users WHERE user_id=? and user_pw=?";
 		int result = -1;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getUserId());
+			psmt.setString(2, vo.getUserPw());
 			rs = psmt.executeQuery();
-
 			if (rs.next()) { // 아이디 존재
-				if (rs.getString("user_id").equals(vo.getUserId())) {
-					result = 1; // 비밀번호 일치
-				} else {
-					result = 0; // 비밀번호 불일치
-				}
-			} else { // 아이디가 존재하지 않는다
-				result = -1;
+				vo.setUserNick(rs.getString("user_nick"));
+				return vo;
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		} finally {
 			disconnect();
 		}
-		return vo;
+		return null;
 	}
 
 }

@@ -28,17 +28,21 @@ public class UserServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		UserDAO dao = new UserDAO();
-
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
 		String userNick = request.getParameter("userNick");
 
+
+		UserDAO dao = new UserDAO();
 		UserVO vo = new UserVO();
+		
 		vo = dao.insertUser(userId, userPw, userNick);
 		vo.setUserId(userId);
 		vo.setUserPw(userPw);
 		vo.setUserNick(userNick);
+		
+		
+		
 
 //		System.out.println("<h1>추가페이지입니다</h1>");
 //		//사용자가 이름과 내용은 등록해서 누르면 

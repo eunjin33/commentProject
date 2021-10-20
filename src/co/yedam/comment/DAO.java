@@ -1,11 +1,12 @@
-package co.yedam.movie;
+package co.yedam.comment;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import org.eclipse.jdt.internal.compiler.ast.Statement;
 
 public class DAO {
 	protected Connection conn;
@@ -13,14 +14,14 @@ public class DAO {
 	protected ResultSet rs;
 	protected PreparedStatement psmt;
 
-	String user = "dong";
-	String pass = "dong";
+	String user = "hr";
+	String pass = "hr";
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 
 	protected void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "dong", "dong");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 			System.out.println("연결성공.");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
