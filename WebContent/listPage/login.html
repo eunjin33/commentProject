@@ -67,13 +67,21 @@ body {
 
 
 <body>
+	<header>
+		<div>
+			<a href="../movie/login.html"><img id="logo"
+				src="images/logo.jpg"></a>
+		</div>
+	</header>
 	<div class="login-form">
 		<form id="frm" method="post" onsubmit="login(event)">
-			로그인 <br> <br> 
-			<input type="text" id="userId" name="userId" class="text-field" placeholder="이메일(example@gmail.com)"><br>
-			<input type="password" id="userPw" name="userPw" class="text-field" placeholder="비밀번호"><br> 
-			<input type="submit" value="로그인" class="submit-btn"> 
-			<input type="button" value="회원가입" class="submit-btn" onclick="location.href='register.html'">
+			로그인 <br> <br> <input type="text" id="userId" name="userId"
+				class="text-field" placeholder="이메일(example@gmail.com)"><br>
+			<input type="password" id="userPw" name="userPw" class="text-field"
+				placeholder="비밀번호"><br> 
+				<input type="submit" value="로그인" class="submit-btn">
+				<input type="button" value="회원가입" class="submit-btn"
+				onclick="location.href='register.html'">
 		</form>
 		<div class="links">
 			<a href="#">다른 방법으로 로그인하기</a>
@@ -95,16 +103,13 @@ body {
 	//document.getElementById('login').onclick = function() {
 	//	sessionStorage.setItem('key', 'value'); 값을 받아서 키값에 저장한다
 	//	sessionStorage.setItem('key', 'value'); 값을 받아서 키값에 저장한다
-//	} 
-	
-	 //document.getElementById('login').onclick = function () {
-        //    let userName = sessionStorage.getItem('username');
-       //     let userId = sessionStorage.getItem('userid');
-         //   console.log(`name: ${userName}, id: ${userId}`);
-      // }
-	 
-	 
-	
+	//	} 
+
+	//document.getElementById('login').onclick = function () {
+	//    let userName = sessionStorage.getItem('username');
+	//     let userId = sessionStorage.getItem('userid');
+	//   console.log(`name: ${userName}, id: ${userId}`);
+	// }
 
 	function login(e) {
 		e.preventDefault();
@@ -136,8 +141,16 @@ body {
 			success : function(result) {
 				console.log(result);
 				if (result) {
-					sessionStorage.setItem('id', $('#userId'));
-					sessionStorage.setItem('pw', $('#userPw')); 
+					//result 안에서 userId 가지고 올 값 찾기
+					//console.log(result.userId);
+
+					//result.userId- 값을 가지고 와서 id에 저장해준다
+					sessionStorage.setItem("id", result.userId);
+
+					//id에 값이 들어갔나 확인하는 과정 
+					console.log(sessionStorage.getItem("id"));
+
+					//로그인 성공
 					window.location.href = 'listPage.html';
 				} else {
 					window.alert('로그인 실패');

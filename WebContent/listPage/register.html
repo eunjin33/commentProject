@@ -15,7 +15,6 @@
 		body {
 			margin: 0;
 			background-color: black;
-			background-image: url(../listPage/images/background_image2.jpg);
 			background-repeat: no-repeat;
 			min-height: 100%;
 			min-width: 1024px;
@@ -132,10 +131,14 @@
 			dataType: 'text',
 			success: function (result) {
 				//화면에 결과반영
+				
 				console.log(result);
+				window.alert('환영합니다');
+				window.location.href = 'login.html';
 
 			},
 			error: function (reject) {
+				window.alert('중복 아이디입니다');
 				console.log(reject);
 
 			}
